@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_pswap.c                                       :+:      :+:    :+:   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/04 18:44:31 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/05 20:48:38 by sbrochar         ###   ########.fr       */
+/*   Created: 2017/12/05 16:47:03 by sbrochar          #+#    #+#             */
+/*   Updated: 2017/12/05 17:09:48 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-
 int					main(int argc, char **argv)
 {
-	size_t			nb_elem;
-	t_stacks		stacks;
-
-	nb_elem = 0;
-	stacks.a = NULL;
-	stacks.b = ps_create_list();
-	if (argc <= 1)
-		ft_printf("usage: ./push_swap <nb1> <nb2> <...>\n");
-	else
-	{
-		if (!parsing_args(&nb_elem, &(stacks.a), argv + 1) || !(stacks.b))
-			ft_printf("Error\n");
-//		else
-//			choose_algo(&stacks, nb_elem);
-	}
-	if (stacks.a)
-		ps_free_list(&(stacks.a));
-	if (stacks.b)
-		ps_free_list(&(stacks.b));
-//	while (1){}
+	ft_printf("%d %d\n", argc, argv[0]);
 	return (0);
 }

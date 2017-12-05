@@ -6,11 +6,11 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/12/04 18:01:01 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/12/05 17:59:11 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME1 = ichecker
+NAME1 = checker
 NAME2 = push_swap
 
 INC_DIR = ./inc
@@ -20,16 +20,9 @@ OBJ_DIR = ./obj
 LIB_DIR = ./libft
 LIB_INC = $(LIB_DIR)/inc
 
-SRC1 = #checker.c \
-	   check.c
-SRC2 = #push_swap.c \
-	   push_n_swap.c \
-	   push_n_edge.c \
-	   handle_small_lists.c \
-	   push_on_a.c \
-	   push_on_b.c \
-	   insert_in_a.c
-SRC_COMMON = instructions.c \
+SRC1 = main_checker.c
+SRC2 = main_pswap.c
+SRC_COMMON = linked_list.c \
 			 parsing_args.c
 
 OBJ1 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC1))
