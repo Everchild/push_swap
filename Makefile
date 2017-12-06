@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/12/05 17:59:11 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/12/06 18:24:06 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ LIB_INC = $(LIB_DIR)/inc
 SRC1 = main_checker.c
 SRC2 = main_pswap.c
 SRC_COMMON = linked_list.c \
-			 parsing_args.c
+			 parsing_args.c \
+			 instructions.c
 
 OBJ1 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC1))
 OBJ2 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC2))

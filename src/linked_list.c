@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:56:08 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/05 19:18:21 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/06 18:24:01 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,34 @@ void				ps_free_list(t_stack **list)
 			ft_memdel((void **)&cur);
 		}
 		ft_memdel((void **)list);
+	}
+}
+
+void				ps_remove_node(t_stack **list, t_elem **node)
+{
+	t_elem			*to_delete;
+
+	if (list && *list && node && *node)
+	{
+		to_delete = *node;
+		if ((*list)->nb_elems > 1)
+		{
+			if (to_delete == (*list)->start)
+				(*list)->start = to_delete->next;
+			if (to_delete == (*list)->end)
+				(*list)->end = to_delete->prev;
+			to_delete->prev->next = to_delete->next;
+			to_delete->next->prev = to_delete->prev;
+		}
+		else
+		{
+			(*list)->start = NULL;
+			(*list)->end = NULL;
+		}
+		to_delete->prev = NULL;
+		to_delete->next = NULL;
+		ft_memdel((void **)&to_delete);
+		(*list)->nb_elems -= 1;
 	}
 }
 
@@ -91,4 +119,37 @@ t_elem				*ps_add_end(t_stack **list, t_elem *node)
 		return ((*list)->end);
 	}
 	return (NULL);
+}
+
+t_elem				*ps_add_start(t_stack **list, t_elem *node)
+{
+	if (list && *list && node)
+	{
+		if (!(*list)->start && !(*list)->end)
+		{
+			(*list)->start = node;
+			(*list)->end = node;
+			node->next = (*list)->start;
+		}
+		else
+		{
+			node->next = (*list)->start;
+			(*list)->start->prev = node;
+			(*list)->start = node;
+		}
+		node->prev = (*list)->end;
+		(*list)->end->next = node;
+		(*list)->nb_elems += 1;
+		return ((*list)->start);
+	}
+	return (NULL);
+}
+
+void				ps_swap_nodes(t_elem **e1, t_elem **e2)
+{
+	int				tmp;
+
+	tmp = (*e1)->nb;
+	(*e1)->nb = (*e2)->nb;
+	(*e2)->nb = tmp;
 }

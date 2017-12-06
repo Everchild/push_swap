@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:04:35 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/05 18:18:47 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/06 18:24:08 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,24 @@ typedef struct		s_instr
 }					t_instr;
 
 void				ps_free_list(t_stack **list);
+void				ps_remove_node(t_stack **list, t_elem **node);
 t_stack				*ps_create_list(void);
 t_elem				*ps_create_elem(int nb);
 t_elem				*ps_add_end(t_stack **list, t_elem *node);
+t_elem				*ps_add_start(t_stack **list, t_elem *node);
+void				ps_swap_nodes(t_elem **e1, t_elem **e2);
+
+void				swap_a(t_stack **a, t_stack **b, t_bool sort);
+void				swap_b(t_stack **a, t_stack **b, t_bool sort);
+void				swap_ab(t_stack **a, t_stack **b, t_bool sort);
+void				push_a(t_stack **a, t_stack **b, t_bool sort);
+void				push_b(t_stack **a, t_stack **b, t_bool sort);
+void				rotate_a(t_stack **a, t_stack **b, t_bool sort);
+void				rotate_b(t_stack **a, t_stack **b, t_bool sort);
+void				rotate_ab(t_stack **a, t_stack **b, t_bool sort);
+void				reverse_rotate_a(t_stack **a, t_stack **b, t_bool sort);
+void				reverse_rotate_b(t_stack **a, t_stack **b, t_bool sort);
+void				reverse_rotate_ab(t_stack **a, t_stack **b, t_bool sort);
 
 t_bool				parsing_args(size_t *nb_elem, t_stack **a, char **args);
 
