@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:04:35 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/06 18:24:08 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/06 22:30:41 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <libft.h>
 
 # define NB_INSTR 11
-# define PS_PK 1
+# define PS_OK 1
 # define PS_KO 2
 # define PS_ERROR 3
 

@@ -6,7 +6,7 @@
 /*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 00:11:06 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/06 18:23:59 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/07 18:13:25 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void				push_b(t_stack **a, t_stack **b, t_bool sort)
 		ft_printf("pb\n");
 	if (a && *a && (*a)->nb_elems >= 1)
 	{
-		new = ps_create_elem((*b)->start->nb);
+		new = ps_create_elem((*a)->start->nb);
 		ps_add_start(b, new);
 		ps_remove_node(a, &(*a)->start);
 	}

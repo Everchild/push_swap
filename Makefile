@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/12/06 18:24:06 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/12/07 18:06:02 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	make -C $(LIB_DIR) clean
-	rm -f $(OBJ)
+	rm -f $(OBJ1) $(OBJ2) $(OBJ_COMMON)
 
 fclean: clean
 	make -C $(LIB_DIR) fclean
