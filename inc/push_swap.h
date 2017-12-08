@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:04:35 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/06 22:30:41 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/07 21:54:36 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_stack				*ps_create_list(void);
 t_elem				*ps_create_elem(int nb);
 t_elem				*ps_add_end(t_stack **list, t_elem *node);
 t_elem				*ps_add_start(t_stack **list, t_elem *node);
+t_elem				*ps_insert_elem(t_stack **list, t_elem *new, t_elem *next);
 void				ps_swap_nodes(t_elem **e1, t_elem **e2);
 
 void				swap_a(t_stack **a, t_stack **b, t_bool sort);
@@ -67,5 +68,9 @@ void				reverse_rotate_b(t_stack **a, t_stack **b, t_bool sort);
 void				reverse_rotate_ab(t_stack **a, t_stack **b, t_bool sort);
 
 t_bool				parsing_args(size_t *nb_elem, t_stack **a, char **args);
+void				choose_algo(t_stacks *stacks, size_t nb_elem);
+int					find_n_edge(t_stack **list, size_t n, t_bool small);
+void				push_n_smallest_b(t_stacks *stacks, size_t n, int n_smallest, t_bool first);
+void				sort_insert(t_stack **a, t_stack **b, size_t rest, size_t n);
 
 #endif

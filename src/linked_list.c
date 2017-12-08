@@ -6,10 +6,11 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 17:56:08 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/06 18:24:01 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 01:03:17 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <push_swap.h>
 
 void				ps_free_list(t_stack **list)
@@ -28,14 +29,19 @@ void				ps_free_list(t_stack **list)
 				next = cur->next;
 				cur->prev = NULL;
 				cur->next = NULL;
-				ft_memdel((void **)&cur);
+				free(cur);
+				cur = NULL;
 				cur = next;
 			}
 			cur->prev = NULL;
 			cur->next = NULL;
-			ft_memdel((void **)&cur);
+			free(cur);
+			cur = NULL;
 		}
-		ft_memdel((void **)list);
+		(*list)->start = NULL;
+		(*list)->end = NULL;
+		free(*list);
+		*list = NULL;
 	}
 }
 
@@ -62,7 +68,8 @@ void				ps_remove_node(t_stack **list, t_elem **node)
 		}
 		to_delete->prev = NULL;
 		to_delete->next = NULL;
-		ft_memdel((void **)&to_delete);
+		free(to_delete);
+		to_delete = NULL;
 		(*list)->nb_elems -= 1;
 	}
 }
@@ -141,6 +148,25 @@ t_elem				*ps_add_start(t_stack **list, t_elem *node)
 		(*list)->end->next = node;
 		(*list)->nb_elems += 1;
 		return ((*list)->start);
+	}
+	return (NULL);
+}
+
+t_elem				*ps_insert_elem(t_stack **list, t_elem *new, t_elem *next)
+{
+	if (list && *list && new && next)
+	{
+		if ((*list)->start == next)
+			return (ps_add_start(list, new));
+		else
+		{
+			new->prev = next->prev;
+			new->next = next;
+			next->prev = new;
+			new->prev->next = new;
+			(*list)->nb_elems += 1;
+			return (new);
+		}
 	}
 	return (NULL);
 }
