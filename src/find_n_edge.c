@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 19:05:50 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 01:09:03 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 01:14:27 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void			insert_smallest_node(t_stack **n_edge, int i, size_t n)
 
 	cur = (*n_edge)->start;
 	node = ps_create_elem(i);
-	printf("node : %p\n", node);
+//	printf("node : %p\n", node);
 	if (node)
 	{
 		if (!cur)
@@ -81,7 +81,7 @@ int					find_n_edge(t_stack **list, size_t n, t_bool small)
 			else
 				insert_biggest_node(&n_edge, cur->nb, n);
 			cur = cur->next;
-			getchar();
+//			getchar();
 		}
 		if (small)
 			insert_smallest_node(&n_edge, cur->nb, n);
@@ -89,8 +89,8 @@ int					find_n_edge(t_stack **list, size_t n, t_bool small)
 			insert_biggest_node(&n_edge, cur->nb, n);
 	}
 	ret = n_edge->end->nb;
-	printf("list: %p | start: %p | end: %p\n", n_edge, n_edge->start, n_edge->end);fflush(stdout); // a suppr
+//	printf("list: %p | start: %p | end: %p\n", n_edge, n_edge->start, n_edge->end);fflush(stdout); // a suppr
 	ps_free_list(&n_edge);
-	printf("list: %p\n", n_edge);fflush(stdout); // a suppr
+//	printf("list: %p\n", n_edge);fflush(stdout); // a suppr
 	return (ret);
 }
