@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 19:05:50 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 03:39:34 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 04:16:45 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,21 @@ static void			insert_biggest_node(t_stack **n_edge, int i, size_t n)
 	node = ps_create_elem(i);
 	if (node)
 	{
-		while (cur && cur != (*n_edge)->end && node->nb < cur->nb)
-			cur = cur->next;
-		if (cur != (*n_edge)->end || (cur == (*n_edge)->end && node->nb > cur->nb))
-			ps_insert_elem(n_edge, node, cur);
-		else if (node->nb < cur->nb && (*n_edge)->nb_elems < n)
+		if (!cur)
 			ps_add_end(n_edge, node);
 		else
-			ft_memdel((void **)&node);
-		if ((*n_edge)->nb_elems > n)
-			ps_remove_node(n_edge, &(*n_edge)->end);
+		{
+			while (cur && cur != (*n_edge)->end && node->nb < cur->nb)
+				cur = cur->next;
+			if (cur != (*n_edge)->end || (cur == (*n_edge)->end && node->nb > cur->nb))
+				ps_insert_elem(n_edge, node, cur);
+			else if (node->nb < cur->nb && (*n_edge)->nb_elems < n)
+				ps_add_end(n_edge, node);
+			else
+				ft_memdel((void **)&node);
+			if ((*n_edge)->nb_elems > n)
+				ps_remove_node(n_edge, &(*n_edge)->end);
+		}
 	}
 }
 

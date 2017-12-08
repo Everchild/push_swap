@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/12/07 21:47:40 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/12/08 03:52:47 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC1 = main_checker.c
 SRC2 = main_pswap.c \
 	   choose_algo.c \
 	   find_n_edge.c \
+	   push_n_a.c \
 	   push_n_b.c \
 	   sort_insert.c
 SRC_COMMON = linked_list.c \

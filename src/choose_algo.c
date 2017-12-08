@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:37:50 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 03:45:44 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 03:50:38 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,34 @@ static t_bool		is_sorted(t_stack *a)
 	return (B_TRUE);
 }
 
-/*static size_t		prep_subdivision(t_stacks *stacks, size_t n, size_t nb_elem, size_t rest)
+static size_t		prep_subdivision(t_stacks *stacks, size_t n, size_t nb_elem, size_t rest)
 {
 	int				n_to_push;
 
 	n = nb_elem / 4;
 	while (n > (20 * nb_elem / 100))
 	{
-//		while (stacks->a->nb_elems > n)
-//		{
-//			n_to_push = find_n_edge()
-//		}
-		n /= 4
+		while (stacks->a->nb_elems > n)
+		{
+			n_to_push = find_n_edge(&(stacks->a), n, B_TRUE);
+			push_n_smallest_b(stacks, n, n_to_push, B_TRUE);
+		}
+		rest = stacks->a->nb_elems;
+		n_to_push = find_n_edge(&(stacks->a), n, B_TRUE);
+		push_n_smallest_b(stacks, rest, n_to_push, B_TRUE);
+		n /= 4;
+		while (stacks->b->nb_elems > n)
+		{
+			n_to_push = find_n_edge(&(stacks->b), n, B_FALSE);
+			push_n_biggest_a(&(stacks->a), &(stacks->b), n, n_to_push);
+		}
+		rest = stacks->b->nb_elems;
+		n_to_push = find_n_edge(&(stacks->b), n, B_FALSE);
+		push_n_biggest_a(&(stacks->a), &(stacks->b), n, n_to_push);
+		n /= 4;
 	}
 	return (n);
-}*/
+}
 
 static void			big_list(size_t n, size_t nb_elem, t_stacks *stacks)
 {
@@ -52,9 +65,9 @@ static void			big_list(size_t n, size_t nb_elem, t_stacks *stacks)
 	while (stacks->a->nb_elems > n)
 	{
 		n_to_push = find_n_edge(&(stacks->a), n, B_TRUE);
-//		if (nb_elem > 200)
-//			push_n_smallest_b(stacks, n, n_to_push, B_FALSE);
-//		else
+		if (nb_elem > 200)
+			push_n_smallest_b(stacks, n, n_to_push, B_FALSE);
+		else
 			push_n_smallest_b(stacks, n, n_to_push, B_TRUE);
 	}
 	rest = stacks->a->nb_elems;
