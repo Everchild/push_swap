@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:37:50 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 03:50:38 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 04:48:40 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void				choose_algo(t_stacks *stacks, size_t nb_elem)
 	rest = 0;
 	if (!is_sorted(stacks->a))
 	{
-//		if (nb_elem <= 6)
-//			small_list();
-//		else
-//		{
+		if (nb_elem <= 6)
+			small_list(stacks, nb_elem);
+		else
+		{
 			if (nb_elem > 200)
 				n = prep_subdivision(stacks, n, nb_elem, rest);
 			big_list(n, nb_elem, stacks);
-//		}
+		}
 	}
 }

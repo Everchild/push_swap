@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:04:35 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 03:54:43 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 04:48:19 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void				reverse_rotate_ab(t_stack **a, t_stack **b, t_bool sort);
 
 t_bool				parsing_args(size_t *nb_elem, t_stack **a, char **args);
 void				choose_algo(t_stacks *stacks, size_t nb_elem);
+void				small_list(t_stacks *stacks, size_t nb_elem);
 int					find_n_edge(t_stack **list, size_t n, t_bool small);
 void				push_n_biggest_a(t_stack **a, t_stack **b, size_t n, int n_biggest);
 void				push_n_smallest_b(t_stacks *stacks, size_t n, int n_smallest, t_bool first);

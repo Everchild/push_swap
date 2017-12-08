@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/12/08 03:52:47 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/12/08 04:40:48 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ LIB_INC = $(LIB_DIR)/inc
 SRC1 = main_checker.c
 SRC2 = main_pswap.c \
 	   choose_algo.c \
+	   small_list.c \
 	   find_n_edge.c \
 	   push_n_a.c \
 	   push_n_b.c \
