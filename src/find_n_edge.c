@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 19:05:50 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 01:14:27 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 03:22:05 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void			insert_smallest_node(t_stack **n_edge, int i, size_t n)
 
 	cur = (*n_edge)->start;
 	node = ps_create_elem(i);
-//	printf("node : %p\n", node);
+	printf("node : %p | value %d\n", node, node->nb);
 	if (node)
 	{
 		if (!cur)
@@ -53,6 +53,8 @@ static void			insert_smallest_node(t_stack **n_edge, int i, size_t n)
 				ps_insert_elem(n_edge, node, cur);
 			else if (node->nb > cur->nb && (*n_edge)->nb_elems < n)
 				ps_add_end(n_edge, node);
+			else
+				ft_memdel((void **)&node);
 			if ((*n_edge)->nb_elems > n)
 			{
 	//			to_delete = (*n_edge)->end;
@@ -81,6 +83,7 @@ int					find_n_edge(t_stack **list, size_t n, t_bool small)
 			else
 				insert_biggest_node(&n_edge, cur->nb, n);
 			cur = cur->next;
+			printf("node : %p | value %d\n", n_edge->start, n_edge->start->nb);
 //			getchar();
 		}
 		if (small)
