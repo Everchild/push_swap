@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:44:31 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 01:14:59 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/08 03:43:22 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int					main(int argc, char **argv)
 		else
 			choose_algo(&stacks, nb_elem);
 	}
-//	while (1){}
 	if (stacks.a)
 		ps_free_list(&(stacks.a));
 	if (stacks.b)
