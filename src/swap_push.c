@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   swap_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/18 00:11:06 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/07 18:13:25 by sbrochar         ###   ########.fr       */
+/*   Created: 2017/12/12 14:26:51 by sbrochar          #+#    #+#             */
+/*   Updated: 2017/12/12 14:28:53 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,68 +64,4 @@ void				push_b(t_stack **a, t_stack **b, t_bool sort)
 		ps_add_start(b, new);
 		ps_remove_node(a, &(*a)->start);
 	}
-}
-
-void				rotate_a(t_stack **a, t_stack **b, t_bool sort)
-{
-	if (sort)
-		ft_printf("ra\n");
-	if (a && *a && (*a)->nb_elems > 1)
-	{
-		(*a)->start = (*a)->start->next;
-		(*a)->end = (*a)->end->next;
-	}
-	b = (t_stack **)b;
-}
-
-void				rotate_b(t_stack **a, t_stack **b, t_bool sort)
-{
-	if (sort)
-		ft_printf("rb\n");
-	if (b && *b && (*b)->nb_elems > 1)
-	{
-		(*b)->start = (*b)->start->next;
-		(*b)->end = (*b)->end->next;
-	}
-	a = (t_stack **)a;
-}
-
-void				rotate_ab(t_stack **a, t_stack **b, t_bool sort)
-{
-	if (sort)
-		ft_printf("rr\n");
-	rotate_a(a, b, B_FALSE);
-	rotate_b(a, b, B_FALSE);
-}
-
-void				reverse_rotate_a(t_stack **a, t_stack **b, t_bool sort)
-{
-	if (sort)
-		ft_printf("rra\n");
-	if (a && *a && (*a)->nb_elems > 1)
-	{
-		(*a)->start = (*a)->start->prev;
-		(*a)->end = (*a)->end->prev;
-	}
-	b = (t_stack **)b;
-}
-
-void				reverse_rotate_b(t_stack **a, t_stack **b, t_bool sort)
-{
-	if (sort)
-		ft_printf("rrb\n");
-	if (b && *b && (*b)->nb_elems > 1)
-	{
-		(*b)->start = (*b)->start->prev;
-		(*b)->end = (*b)->end->prev;
-	}
-	a = (t_stack **)a;
-}
-
-void				reverse_rotate_ab(t_stack **a, t_stack **b, t_bool sort)
-{
-	if (sort)
-		ft_printf("rrr\n");
-	reverse_rotate_a(a, b, B_FALSE);
-	reverse_rotate_b(a, b, B_FALSE);
 }

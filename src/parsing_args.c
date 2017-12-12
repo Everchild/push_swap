@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 19:41:44 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/05 19:59:44 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:46:41 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,18 @@ static t_bool		check_errors(char *args)
 	i = 0;
 	while (args && args[i])
 	{
-		if (!ft_isdigit(args[i]) && (args[i] != '-' && args[i] != ' ' && args[i] != '+'))
+		if (!ft_isdigit(args[i]) && (args[i] != '-' && args[i] != ' '
+			&& args[i] != '+'))
+		{
+			ft_printf("bouh1");
 			return (B_FALSE);
-		if ((args[i] == '-' || args[i] == '+') && ((i > 0 && args[i = 1] != ' ') || !ft_isdigit(args[i + 1])))
+		}
+		if ((args[i] == '-' || args[i] == '+')
+			&& ((i > 0 && args[i - 1] != ' ') || !ft_isdigit(args[i + 1])))
+		{
+			ft_printf("bouh2");
 			return (B_FALSE);
+		}
 		i++;
 	}
 	return (B_TRUE);

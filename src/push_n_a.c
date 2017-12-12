@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:30:04 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 04:23:10 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:30:53 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static t_bool		choose_rotating_way(t_stack **list, int n_biggest)
 	return (check_r < check_rr);
 }
 
-void				push_n_biggest_a(t_stack **a, t_stack **b, size_t n, int n_biggest)
+void				push_n_biggest_a(t_stack **a, t_stack **b, size_t n,
+					int n_biggest)
 {
 	size_t			i;
 	t_bool			rb;

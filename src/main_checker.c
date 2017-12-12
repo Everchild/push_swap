@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 16:47:03 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/07 18:35:20 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:22:59 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,40 @@ static int			check_sort(t_stack **a, t_stack **b)
 	return (PS_OK);
 }
 
-static int			ps_check(t_stack **a)
+static int			exec_instr(t_stack **a, t_stack **b, char *inst)
 {
 	t_instr			*all_inst;
+	int				i;
+
+	i = 0;
+	all_inst = get_instructions();
+	while (i < NB_INSTR)
+	{
+		if (!ft_strcmp(inst, all_inst[i].str))
+			break ;
+		i++;
+	}
+	if (i == NB_INSTR)
+		return (PS_ERROR);
+	all_inst[i].instr(a, b, B_FALSE);
+	return (PS_OK);
+}
+
+static int			ps_check(t_stack **a)
+{
 	t_stack			*b;
 	char			*inst;
-	int				i;
 	int				gnl_ret;
 
-	all_inst = get_instructions();
 	b = ps_create_list();
 	inst = NULL;
 	if (*a && b)
 	{
 		while ((gnl_ret = get_next_line(0, &inst)) > 0)
 		{
-			i = 0;
-			while (i < NB_INSTR)
-			{
-				if (!ft_strcmp(inst, all_inst[i].str))
-					break ;
-				i++;
-			}
-			ft_strdel(&inst);
-			if (i == NB_INSTR)
+			if (exec_instr(a, &b, inst) == PS_ERROR)
 				return (PS_ERROR);
-			all_inst[i].instr(a, &b, B_FALSE);
+			ft_strdel(&inst);
 		}
 		if (!gnl_ret)
 			return (check_sort(a, &b));

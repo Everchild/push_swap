@@ -6,12 +6,11 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 18:44:31 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 03:43:22 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:29:58 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
 
 int					main(int argc, char **argv)
 {

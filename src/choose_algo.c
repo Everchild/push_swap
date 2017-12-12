@@ -6,7 +6,7 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 18:37:50 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/08 04:48:40 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/12 14:22:34 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static t_bool		is_sorted(t_stack *a)
 	return (B_TRUE);
 }
 
-static size_t		prep_subdivision(t_stacks *stacks, size_t n, size_t nb_elem, size_t rest)
+static size_t		prep_subdivision(t_stacks *stacks, size_t n, size_t nb_elem,
+					size_t rest)
 {
 	int				n_to_push;
 

@@ -6,7 +6,7 @@
 #    By: sbrochar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/15 17:13:45 by sbrochar          #+#    #+#              #
-#    Updated: 2017/12/08 04:40:48 by sbrochar         ###   ########.fr        #
+#    Updated: 2017/12/12 15:54:47 by sbrochar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,18 @@ SRC2 = main_pswap.c \
 	   push_n_b.c \
 	   sort_insert.c
 SRC_COMMON = linked_list.c \
+			 linked_list2.c \
 			 parsing_args.c \
-			 instructions.c
+			 swap_push.c \
+			 rotate.c \
+			 rrotate.c
 
 OBJ1 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC1))
 OBJ2 = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC2))
 OBJ_COMMON = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_COMMON))
 
 CC = clang
-CFLAGS = -g -c -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_INC)
+CFLAGS = -c -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIB_INC)
 LFLAGS = -L$(LIB_DIR) -lft
 
 all: $(NAME1) $(NAME2)

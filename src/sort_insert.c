@@ -6,11 +6,22 @@
 /*   By: sbrochar <sbrochar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 21:47:49 by sbrochar          #+#    #+#             */
-/*   Updated: 2017/12/07 23:01:55 by sbrochar         ###   ########.fr       */
+/*   Updated: 2017/12/12 15:31:22 by sbrochar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static void			insert(t_elem *cur, t_stack **n_biggest, t_elem *node)
+{
+	while (cur != (*n_biggest)->end && node->nb < cur->nb)
+		cur = cur->next;
+	if (cur != (*n_biggest)->end
+		|| (cur == (*n_biggest)->end && node->nb > cur->nb))
+		ps_insert_elem(n_biggest, node, cur);
+	else
+		ps_add_end(n_biggest, node);
+}
 
 static void			sort_n_biggest(t_stack **n_biggest, t_stack **b, size_t n)
 {
@@ -28,30 +39,26 @@ static void			sort_n_biggest(t_stack **n_biggest, t_stack **b, size_t n)
 			if (!cur)
 				ps_add_end(n_biggest, node);
 			else
-			{
-				while (cur != (*n_biggest)->end && node->nb < cur->nb)
-					cur = cur->next;
-				if (cur != (*n_biggest)->end || (cur == (*n_biggest)->end && node->nb > cur->nb))
-					ps_insert_elem(n_biggest, node, cur);
-				else
-					ps_add_end(n_biggest, node);
-			}
+				insert(cur, n_biggest, node);
 			n--;
 			nb_to_sort = nb_to_sort->next;
 		}
 	}
-/*	t_elem *bla = (*n_biggest)->start;
-	int f = 0;
-	while (bla != (*n_biggest)->end)
-	{
-		ft_printf("elem #%d: %d\n", f, bla->nb);
-		bla = bla->next;
-		f++;
-	}
-	ft_printf("elem #%d: %d\n", f, bla->nb);*/
 }
 
-static void			find_n_biggest(t_stack **a, t_stack **b, t_stack **n_biggest)
+static void			choose_rotating_way(t_elem **to_find, t_elem *to_push,
+					t_bool *rb, t_stack **b)
+{
+	while ((*to_find)->nb != to_push->nb)
+	{
+		if (*to_find == (*b)->start)
+			*rb = B_TRUE;
+		*to_find = (*to_find)->next;
+	}
+}
+
+static void			find_n_biggest(t_stack **a, t_stack **b,
+					t_stack **n_biggest)
 {
 	t_elem			*to_find;
 	t_elem			*to_push;
@@ -64,12 +71,7 @@ static void			find_n_biggest(t_stack **a, t_stack **b, t_stack **n_biggest)
 	{
 		rb = B_FALSE;
 		to_find = save;
-		while (to_find->nb != to_push->nb)
-		{
-			if (to_find == (*b)->start)
-				rb = B_TRUE;
-			to_find = to_find->next;
-		}
+		choose_rotating_way(&to_find, to_push, &rb, b);
 		if (to_find->nb == save->nb)
 			save = save->next;
 		while ((*b)->start != to_find)
